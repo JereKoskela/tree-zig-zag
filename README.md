@@ -48,7 +48,7 @@ The script should execute in around 8 minutes on a mid-range laptop.
 
 ## Data sets and data simulation
 
-All six data sets used in the simualtion study are available in the `Data` folder.
+All six data sets used in the simulation study are available in the `Data` folder.
 Each row in each data file is an observed type.
 The number in the last column specifies the number of times the type appeared in the sample, while the other columns specify the pattern of mutations carried by the type.
 
