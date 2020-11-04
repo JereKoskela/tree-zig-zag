@@ -7,10 +7,11 @@ Specifications of all six methods are available in the preprint at <https://arxi
 tree-zig-zag has been tested on Kubuntu 18.04.
 It requires the following:
 - the g++ compiler (tested on version 7.5.0),
-- the Gnu Scientific Library (tested on version 2.4),
-- R (tested on version 4.0.3 using RStudio 1.3.1073).
+- the Gnu Scientific Library (tested on version 2.4) available at <https://www.gnu.org/software/gsl/>,
+- the libconfig library (tested on version 1.5-0.4) available at <http://hyperrealm.github.io/libconfig/>,
+- R (tested on version 4.0.3 using RStudio 1.3.1073) available at <https://www.r-project.org/>.
 
-The `post_processing.R` script requires two further non-core libraries:
+The `post_processing.R` script requires two further non-core R libraries:
 - mcmcse (tested on version 1.4-1) available at <https://cran.r-project.org/web/packages/mcmcse/index.html>,
 - tictoc (tested on version 1.0) available at <https://cran.r-project.org/web/packages/tictoc/index.html>.
 
@@ -45,6 +46,23 @@ The newly created `acceptancerates-runtimes.txt` file will contain the run times
 Set the `working_dir` variable according to the commented instructions at the top of the `post_processing.R` script, and then execute the script. It creates PNG trace plots and txt files containing estimates of effective sample sizes into your R working directory. Filenames specify which plot corresponds to which simulation, and effective sample sizes are for mutation rates in the left column, tree heights in the right, and the three rows correspond to the zig-zag, hybrid, and Metropolis-Hastings methods in that order.
 
 The script should execute in around 8 minutes on a mid-range laptop.
+
+## Running other simulations
+
+To specify your own simulation runs, first create a data file containing your desired data set.
+See the **Data sets and data simulation** section for details of the file format and the `Data` folder for examples.
+Only the infinite sites model and the finite sites model with two types per site are supported.
+
+Next, create a config file specifying the simulation hyperparameters, as well as the location of the data file.
+Config files must follow the format of the examples in the `Configs` folder.
+**Warning**: floating point numbers must specify at least one decimal place, even if the digit at that place is zero.
+Omitting a decimal place from a floating point parameter can cause silent errors.
+
+Once a data file and a config file have been created, run the simulation by navigating to the folder for the desired simulator, and calling
+
+    ./simulate <path to config file>
+
+The `run.hs` shell script contains examples of such calls.
 
 ## Data sets and data simulation
 
