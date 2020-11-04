@@ -62,7 +62,7 @@ Once a data file and a config file have been created, run the simulation by navi
 
     ./simulate <path to config file>
 
-The `run.hs` shell script contains examples of such calls.
+The `run.sh` shell script contains examples of such calls.
 
 ## Data sets and data simulation
 
