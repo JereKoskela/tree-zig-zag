@@ -119,7 +119,7 @@ struct Sim {
                 }
             }
         }
-        return seg / harmonic;
+        return std::max(seg, 1) / harmonic;
     }
 
     void sample_tree() {
