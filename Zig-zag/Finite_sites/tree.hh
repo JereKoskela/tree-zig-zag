@@ -44,8 +44,8 @@ struct Sim {
             row_count.push_back(row.back());
             n += row.back();
             s++;
+            nsites = row.size() - 1;
         }
-        nsites = data->size2;
         left_child.resize(n - 1, -1);
         right_child.resize(n - 1, -1);
         v.resize(n - 1, 1);
