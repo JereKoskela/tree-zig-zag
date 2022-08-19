@@ -53,8 +53,10 @@ struct Sim {
         std::vector<double> L_tmp(2);
         std::vector<std::vector<double>> L_full(2 * sample_size - 1, L_tmp);
         L.resize(nsites, L_full);
-        data = gsl_matrix_alloc(tmp->size1, tmp->size2);
-        gsl_spmatrix_sp2d(data, tmp);
+        data = gsl_matrix_alloc(tmp->size1, nsites);
+        for (unsigned int j = 0; j < tmp->nz; j++) {
+            gsl_matrix_set(data, tmp->i[j], tmp->p[j], tmp->data[j]);
+        }
         gsl_spmatrix_free(tmp);
         mutation_rate = watterson_estimator() / 2;
         sample_tree();
